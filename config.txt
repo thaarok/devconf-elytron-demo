@@ -1,0 +1,18 @@
+
+bin/add-user.sh -a -u admin -p admin -g Admin
+bin/add-user.sh -a -u adder -p snakesForever! -g Adder
+bin/add-user.sh -a -u remover -p spongesForever! -g Remover
+
+
+Switch to Elytron security
+**************************
+/subsystem=remoting/http-connector=http-remoting-connector:write-attribute(name=sasl-authentication-factory, value=application-sasl-authentication)
+/subsystem=remoting/http-connector=http-remoting-connector:undefine-attribute(name=security-realm)
+
+/subsystem=undertow/application-security-domain=other:add(http-authentication-factory=application-http-authentication)
+/subsystem=ejb3/application-security-domain=other:add(security-domain=ApplicationDomain)
+
+Enable audit
+************
+/subsystem=elytron/security-domain=ApplicationDomain:write-attribute(name=security-event-listener, value=local-audit)
+

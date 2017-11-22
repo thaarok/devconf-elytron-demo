@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cz.devconf.demo</groupId>
+    <artifactId>ear</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>ear</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <version.org.wildfly.ejb.client>11.0.0.Final</version.org.wildfly.ejb.client>
+        <version.org.wildfly.plugins.maven.plugin>1.2.0.Final</version.org.wildfly.plugins.maven.plugin>
+        <version.ear.plugin>2.10.1</version.ear.plugin>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>cz.devconf.demo</groupId>
+            <artifactId>ejb-backend</artifactId>
+            <type>ejb</type>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>cz.devconf.demo</groupId>
+            <artifactId>web-frontend</artifactId>
+            <type>war</type>
+            <version>${project.version}</version>
+            <!--<scope>provided</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-ejb-client-bom</artifactId>
+            <version>${version.org.wildfly.ejb.client}</version>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- mvn wildfly:deploy -->
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>${version.org.wildfly.plugins.maven.plugin}</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>${version.ear.plugin}</version>
+                <configuration>
+                    <modules>
+                        <ejbModule>
+                            <groupId>cz.devconf.demo</groupId>
+                            <artifactId>ejb-backend</artifactId>
+                            <bundleFileName>ejb-backend.jar</bundleFileName>
+                        </ejbModule>
+                        <webModule>
+                            <groupId>cz.devconf.demo</groupId>
+                            <artifactId>web-frontend</artifactId>
+                            <bundleFileName>web-frontend.war</bundleFileName>
+                        </webModule>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
