@@ -22,8 +22,9 @@ public class Client {
         Context context = new InitialContext(properties);
         ItemsRepository repository = (ItemsRepository) context.lookup("ejb:/ejb-backend-1.0-SNAPSHOT/ItemsRepositoryBean!cz.devconf.demo.ejbbackend.ItemsRepository");
 
-        repository.addItem("pokus1");
-        repository.addItem("pokus2");
+        repository.addItem("item1");
+        repository.addItem("item2");
+        repository.addItem("item3");
 
         List<Item> items = repository.getItems();
         for (Item item : items) {
@@ -38,7 +39,7 @@ public class Client {
                         .usePassword("spongesForever!")
                 ).run(() -> {
             try {
-                repository.removeItem("pokus2");
+                repository.removeItem("item3");
             } catch (Exception e) {
                 e.printStackTrace();
             }

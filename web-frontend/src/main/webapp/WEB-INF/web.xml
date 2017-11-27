@@ -4,6 +4,11 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
 
+    <login-config>
+        <auth-method>DIGEST,BASIC</auth-method>
+        <realm-name>My realm</realm-name>
+    </login-config>
+
     <security-constraint>
         <web-resource-collection>
             <url-pattern>/secured/*</url-pattern>
@@ -15,16 +20,7 @@
         </auth-constraint>
     </security-constraint>
 
-    <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
-    </welcome-file-list>
-
-    <login-config>
-      <auth-method>BASIC</auth-method>
-      <realm-name>Test</realm-name>
-   </login-config>
-
-   <security-role>
+    <security-role>
         <role-name>Admin</role-name>
     </security-role>
     <security-role>
@@ -33,5 +29,9 @@
     <security-role>
         <role-name>Remover</role-name>
     </security-role>
+
+    <welcome-file-list>
+        <welcome-file>index.xhtml</welcome-file>
+    </welcome-file-list>
 
 </web-app>

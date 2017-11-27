@@ -16,3 +16,7 @@ Enable audit
 ************
 /subsystem=elytron/security-domain=ApplicationDomain:write-attribute(name=security-event-listener, value=local-audit)
 
+Add DIGEST into supported HTTP mechanisms
+*****************************************
+/subsystem=elytron/http-authentication-factory=application-http-authentication:list-add(name="mechanism-configurations",value={mechanism-name="DIGEST", mechanism-realm-configurations = [{"realm-name" => "Application Realm"}]})
+
