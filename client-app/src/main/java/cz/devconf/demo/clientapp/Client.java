@@ -36,7 +36,7 @@ public class Client {
                 .with(MatchRule.ALL, AuthenticationConfiguration.empty()
                         .setSaslMechanismSelector(SaslMechanismSelector.NONE.addMechanism("DIGEST-MD5"))
                         .useName("remover")
-                        .usePassword("spongesForever!")
+                        .usePassword("remover")
                 ).run(() -> {
             try {
                 repository.removeItem("item3");

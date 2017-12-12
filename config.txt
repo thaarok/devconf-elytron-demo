@@ -1,7 +1,7 @@
 
 bin/add-user.sh -a -u admin -p admin -g Admin
-bin/add-user.sh -a -u adder -p snakesForever! -g Adder
-bin/add-user.sh -a -u remover -p spongesForever! -g Remover
+bin/add-user.sh -a -u adder -p adder -g Adder
+bin/add-user.sh -a -u remover -p remover -g Remover
 
 
 Switch to Elytron security

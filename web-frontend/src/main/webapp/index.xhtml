@@ -9,11 +9,14 @@
 </h:head>
 <h:body>
 
-    This is page is not secured.
+    This is page is not secured.<br />
 
-    <a href="secured/index.xhtml">Continue to secured</a>
+    <a href="secured/index.xhtml">Continue to secured</a><br />
 
-    <a href="secured/items.xhtml">Continue to items management</a>
+    <a href="secured/items.xhtml">Continue to items management</a><br />
+    
+    <h:outputText value="Your name: #{request.remoteUser}" /><br />
+    <h:outputText value="You are admin: #{request.isUserInRole('Admin')}" /><br />
 
 </h:body>
 </html>
