@@ -10,8 +10,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.security.Principal;
 import java.util.List;
+import org.jboss.ejb3.annotation.SecurityDomain;
 
 @Stateless
+@SecurityDomain("other")
 @PermitAll // need to use any security annotation to obtain caller principal
 public class ItemsRepositoryBean implements ItemsRepository {
 
@@ -28,7 +30,7 @@ public class ItemsRepositoryBean implements ItemsRepository {
     }
 
     @Override
-    @RolesAllowed({"Adder"})
+    @RolesAllowed({"Adder", "Admin"})
     public void addItem(String name) {
         Principal caller = ejbContext.getCallerPrincipal();
         String addedBy = caller != null ? caller.getName() : null;

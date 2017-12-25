@@ -21,7 +21,8 @@ public class SecuredServlet extends HttpServlet {
         resp.getOutputStream().println(
                 "Hello world!\n" +
                 "Your name: " + req.getRemoteUser() + "\n" +
-                "You are admin: " + req.isUserInRole("Admin")
+                "Is Admin: " + req.isUserInRole("Admin") + "\n" +
+                "Is Remover: " + req.isUserInRole("Remover") + "\n"
         );
 
     }
