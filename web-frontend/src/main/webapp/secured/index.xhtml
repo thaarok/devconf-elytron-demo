@@ -8,11 +8,14 @@
 </h:head>
 <h:body>
 
-    This is secured page - only users with Admin, Adder or Remover role can see this.
+    This is secured page - only users with Admin, Adder or Remover role can see this.<br />
 
-    <h:outputText value="Your name: #{request.remoteUser}" />
-    <h:outputText value="You are admin"
-                  rendered="#{request.isUserInRole('Admin')}" />
+    <br />
+
+    <h:outputText value="Your name: #{request.remoteUser}" /><br />
+    <h:outputText value="You are Admin: #{request.isUserInRole('Admin')}"/><br />
+    <h:outputText value="You are Adder: #{request.isUserInRole('Adder')}"/><br />
+    <h:outputText value="You are Remover: #{request.isUserInRole('Remover')}"/><br />
 
 </h:body>
 </html>
