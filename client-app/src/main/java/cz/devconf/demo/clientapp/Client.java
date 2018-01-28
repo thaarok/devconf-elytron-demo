@@ -19,7 +19,7 @@ public class Client {
         properties.put(Context.INITIAL_CONTEXT_FACTORY, "org.wildfly.naming.client.WildFlyInitialContextFactory");
         properties.put(Context.PROVIDER_URL, "remote+http://localhost:8080");
         Context context = new InitialContext(properties);
-        ItemsRepository repository = (ItemsRepository) context.lookup("ejb:/ejb-backend-1.0-SNAPSHOT/ItemsRepositoryBean!cz.devconf.demo.ejbbackend.ItemsRepository");
+        ItemsRepository repository = (ItemsRepository) context.lookup("ejb:ear-1.0-SNAPSHOT/ejb-backend/ItemsRepositoryBean!cz.devconf.demo.ejbbackend.ItemsRepository");
 
         System.out.println("Testing client application");
         System.out.println("**************************");
